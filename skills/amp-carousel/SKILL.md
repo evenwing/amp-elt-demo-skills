@@ -23,7 +23,7 @@ Generates professional 1080×1080 PNG carousel slides for LinkedIn using Amplitu
 - **Text grays**: Gray40 `#9FA5AD`, Gray50 `#868D95`, Gray60 `#697077`, Gray20 `#D5D9E0`
 - **Font**: Poppins (Bold, Medium, Regular) — installed at `/usr/share/fonts/truetype/google-fonts/`
 - **Top bar**: 8px horizontal gradient from `#0052F2` → `#6980FF` → `#A373FF`
-- **Logo**: Real Amplitude logo PNG when `--logo-dir` is provided; falls back to drawn blue rounded-rect + "Amplitude" text
+- **Logo**: Real Amplitude logo PNGs bundled in `assets/` — no external files needed. Falls back to drawn blue rounded-rect + "Amplitude" text if assets are missing
 - **Title slide motif**: Abstract wave ribbon (blue→violet gradient) inspired by Amplitude's brand graphic elements
 
 ## Workflow
@@ -64,8 +64,8 @@ Where:
 - `--output` is the directory to save PNGs to (e.g. `./carousel/`)
 
 **Logo resolution**: The script automatically finds the Amplitude logo by checking:
-1. `amp-carousel/assets/` (bundled in skill) — takes priority if present
-2. `amp brand/Amplitude Logo/Full/PNG (RGB)/` (workspace fallback)
+1. `amp-carousel/assets/` (bundled with this skill) — **logos are included here by default**
+2. `amp brand/Amplitude Logo/Full/PNG (RGB)/` (workspace fallback, not needed)
 3. Drawn "A" fallback if neither is found
 
 No `--logo-dir` flag needed — logos are resolved automatically.
@@ -226,4 +226,4 @@ Poppins Bold at these sizes renders cleanly on mobile at carousel thumbnail size
 - **Vertical centering**: `text`, `stat`, `checklist`, and `cards` slide types all vertically center their content block within the available space (between logo area and bottom padding). This keeps content visually balanced rather than anchored to the top.
 - **Stat context text**: Uses `draw_wrapped_centered` return values to track actual rendered height, preventing overlap when context paragraphs wrap to multiple lines.
 - **Title slide**: Includes a subtle wave motif in the lower portion (blue→violet gradient ribbon) inspired by Amplitude's brand graphic elements. Text is positioned above it.
-- **Real logo**: When `--logo-dir` is provided, the script loads and caches the official Amplitude full logo PNG (scaled to 44px height) and composites it onto every slide.
+- **Real logo**: The script loads the official Amplitude full logo PNG from the bundled `assets/` folder (scaled to 44px height) and composites it onto every slide. No external brand files or `--logo-dir` flag needed.
