@@ -1,0 +1,109 @@
+{
+  "skill_name": "amp-slide",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Make a title slide for a pitch to Spotify. The presenters are Sandhya Hegde (VP Marketing) and James Park (Solutions Engineer).",
+      "expected_output": "Title slide with Amplitude Blue background, 'Amplitude & Spotify' headline, two presenter names with titles, date pill, footer",
+      "slide_type": "title",
+      "assertions": [
+        {"text": "Background fill is #1E61F0", "type": "visual"},
+        {"text": "Headline contains 'Spotify'", "type": "content"},
+        {"text": "Both presenter names appear", "type": "content"},
+        {"text": "Footer contains copyright text", "type": "content"},
+        {"text": "Font is Poppins throughout", "type": "visual"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Add a bullet slide to my deck about what we'll cover today: understanding their activation funnel, identifying drop-off points, reviewing cohort retention, and discussing integration with Snowflake. Use the dark variant. Here's the deck: https://docs.google.com/presentation/d/EXAMPLE/edit",
+      "expected_output": "Content+Bullets slide with black bg, white headline, white card with 4 arrow-bulleted items, vertically centered",
+      "slide_type": "content_bullets",
+      "assertions": [
+        {"text": "Background is black (#000000)", "type": "visual"},
+        {"text": "Headline is 28pt bold left-aligned white", "type": "visual"},
+        {"text": "White card contains 4 bullet items", "type": "content"},
+        {"text": "Body card is vertically centered", "type": "layout"},
+        {"text": "Asks for presentation URL before generating", "type": "workflow"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Create a slide showing our 4 product pillars: Analytics (self-serve insights), Experiment (A/B testing at scale), CDP (unified customer profiles), and Session Replay (visual debugging).",
+      "expected_output": "Multi-Column Cards slide with 4 columns, each with title, pill, and description. Accent color gradient across columns.",
+      "slide_type": "multi_column",
+      "assertions": [
+        {"text": "4 equal-width cards in a row", "type": "layout"},
+        {"text": "Each card has title, pill, and description", "type": "content"},
+        {"text": "Accent colors follow Blue/Blue-Purple/Coral/Purple gradient", "type": "visual"},
+        {"text": "Headline is 28pt bold left-aligned", "type": "visual"},
+        {"text": "Cards are vertically centered", "type": "layout"}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Make a stat callout slide showing Duolingo's results with Amplitude: 34% increase in lesson completion, 12% improvement in D7 retention, 2.5x faster experiment velocity, and $4.2M attributed revenue lift.",
+      "expected_output": "Stat/Metric Callout with 4 columns showing the stats with VERIFIED OUTCOME pills and colored stat numbers",
+      "slide_type": "stat_callout",
+      "assertions": [
+        {"text": "4 stat columns with correct numbers", "type": "content"},
+        {"text": "VERIFIED OUTCOME pills in accent colors", "type": "visual"},
+        {"text": "Stat numbers are large (36pt) in accent colors", "type": "visual"},
+        {"text": "Image placeholders above descriptions", "type": "layout"},
+        {"text": "Content block is vertically centered", "type": "layout"}
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "I need a section divider slide that says 'Customer Success Stories'",
+      "expected_output": "Section divider with Amplitude Blue background, large centered headline, thin divider line below",
+      "slide_type": "section_divider",
+      "assertions": [
+        {"text": "Background is Amplitude Blue (#1E61F0)", "type": "visual"},
+        {"text": "Headline is large (42pt), white, centered", "type": "visual"},
+        {"text": "Thin divider line below headline", "type": "visual"},
+        {"text": "No subtitle or date pill", "type": "layout"},
+        {"text": "Footer is present in light blue", "type": "visual"}
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Make a slide comparing the old way vs the Amplitude way. Old way: manual SQL queries for every question, weeks to get experiment results, data scattered across 5 tools, engineers bottleneck analytics. Amplitude way: anyone can answer product questions, experiments run in hours not weeks, single source of truth for user data, self-serve analytics for every team.",
+      "expected_output": "Two-column text slide with left card (old way) and right card (Amplitude way), each with blue section title and arrow bullets",
+      "slide_type": "two_column",
+      "assertions": [
+        {"text": "Two side-by-side white cards", "type": "layout"},
+        {"text": "Each card has blue section title", "type": "visual"},
+        {"text": "4 arrow bullets per card", "type": "content"},
+        {"text": "Headline is 28pt bold left-aligned", "type": "visual"},
+        {"text": "Cards are vertically centered", "type": "layout"}
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Add a customer quote slide. The quote is from Marcus Thompson, Head of Growth at Peloton: 'We went from guessing what drives engagement to knowing exactly which features move the needle. Amplitude changed how our entire product team makes decisions.'",
+      "expected_output": "Quote slide with black background, blue accent line, white quote text, bold name, grey title",
+      "slide_type": "quote",
+      "assertions": [
+        {"text": "Background is black", "type": "visual"},
+        {"text": "Blue accent line on left side", "type": "visual"},
+        {"text": "Quote text in white 20pt", "type": "visual"},
+        {"text": "Speaker name is bold white", "type": "content"},
+        {"text": "Title/company in grey below name", "type": "visual"}
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Create a slide about our Funnel Analysis feature. Left side should have space for a product screenshot. Right side should list: visual funnel builder with drag-and-drop, real-time conversion tracking by segment, automatic bottleneck detection, and integration with experiment results.",
+      "expected_output": "Image+Text split slide with grey placeholder on left, blue section title and arrow bullets on right",
+      "slide_type": "image_text",
+      "assertions": [
+        {"text": "Left half has grey image placeholder", "type": "layout"},
+        {"text": "Right half has blue section title", "type": "visual"},
+        {"text": "4 arrow-bulleted features listed", "type": "content"},
+        {"text": "Headline is 28pt bold left-aligned", "type": "visual"},
+        {"text": "Split layout is vertically centered", "type": "layout"}
+      ]
+    }
+  ]
+}

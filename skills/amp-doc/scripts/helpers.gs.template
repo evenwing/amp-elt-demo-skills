@@ -1,0 +1,225 @@
+// ============================================================
+// Doc Builder — Reusable Google Docs Generator
+// Project: Doc Builder (Apps Script)
+// Usage: Replace buildDoc() body each time. Helpers are permanent.
+// ============================================================
+
+// --- Colors ---
+var BLACK = '#000000';
+var DARK_GREY = '#333333';
+var MID_GREY = '#666666';
+var LIGHT_GREY = '#F0F2F5';
+var BORDER_GREY = '#E0E0E0';
+var AMP_BLUE = '#1E61F0';
+var WHITE = '#FFFFFF';
+
+// --- Typography ---
+var FONT = 'Poppins';
+var TITLE_SIZE = 24;
+var H1_SIZE = 18;
+var H2_SIZE = 14;
+var H3_SIZE = 12;
+var BODY_SIZE = 11;
+var CAPTION_SIZE = 9;
+
+// ============================================================
+// HELPER FUNCTIONS — Do not modify
+// ============================================================
+
+function styleText(element, opts) {
+  var text = element.editAsText();
+  text.setFontFamily(opts.font || FONT);
+  text.setFontSize(opts.size || BODY_SIZE);
+  text.setForegroundColor(opts.color || DARK_GREY);
+  text.setBold(opts.bold || false);
+  text.setItalic(opts.italic || false);
+  return text;
+}
+
+function addTitle(body, titleText) {
+  var para = body.appendParagraph(titleText);
+  para.setHeading(DocumentApp.ParagraphHeading.TITLE);
+  styleText(para, { size: TITLE_SIZE, color: BLACK, bold: true });
+  para.setSpacingAfter(12);
+  return para;
+}
+
+function addH1(body, text) {
+  var para = body.appendParagraph(text);
+  para.setHeading(DocumentApp.ParagraphHeading.HEADING1);
+  styleText(para, { size: H1_SIZE, color: BLACK, bold: true });
+  para.setSpacingBefore(18);
+  para.setSpacingAfter(6);
+  return para;
+}
+
+function addH2(body, text) {
+  var para = body.appendParagraph(text);
+  para.setHeading(DocumentApp.ParagraphHeading.HEADING2);
+  styleText(para, { size: H2_SIZE, color: BLACK, bold: true });
+  para.setSpacingBefore(14);
+  para.setSpacingAfter(4);
+  return para;
+}
+
+function addH3(body, text) {
+  var para = body.appendParagraph(text);
+  para.setHeading(DocumentApp.ParagraphHeading.HEADING3);
+  styleText(para, { size: H3_SIZE, color: BLACK, bold: true });
+  para.setSpacingBefore(12);
+  para.setSpacingAfter(4);
+  return para;
+}
+
+function addParagraph(body, text) {
+  var para = body.appendParagraph(text);
+  styleText(para, { size: BODY_SIZE, color: DARK_GREY });
+  para.setLineSpacing(1.15);
+  para.setSpacingAfter(6);
+  return para;
+}
+
+function addBulletList(body, items) {
+  // items: array of strings
+  for (var i = 0; i < items.length; i++) {
+    var item = body.appendListItem(items[i]);
+    item.setGlyphType(DocumentApp.GlyphType.BULLET);
+    styleText(item, { size: BODY_SIZE, color: DARK_GREY });
+    item.setLineSpacing(1.15);
+    item.setSpacingAfter(2);
+  }
+}
+
+function addNumberedList(body, items) {
+  for (var i = 0; i < items.length; i++) {
+    var item = body.appendListItem(items[i]);
+    item.setGlyphType(DocumentApp.GlyphType.NUMBER);
+    styleText(item, { size: BODY_SIZE, color: DARK_GREY });
+    item.setLineSpacing(1.15);
+    item.setSpacingAfter(2);
+  }
+}
+
+function addTable(body, data) {
+  // data: 2D array, first row is headers
+  var table = body.appendTable(data);
+  table.setBorderWidth(0.5);
+  table.setBorderColor(BORDER_GREY);
+
+  // Style header row
+  var headerRow = table.getRow(0);
+  for (var i = 0; i < headerRow.getNumCells(); i++) {
+    var cell = headerRow.getCell(i);
+    cell.setBackgroundColor(LIGHT_GREY);
+    var text = cell.editAsText();
+    text.setFontFamily(FONT);
+    text.setBold(true);
+    text.setFontSize(BODY_SIZE);
+    text.setForegroundColor(BLACK);
+  }
+
+  // Style body rows
+  for (var r = 1; r < table.getNumRows(); r++) {
+    var row = table.getRow(r);
+    for (var c = 0; c < row.getNumCells(); c++) {
+      var text = row.getCell(c).editAsText();
+      text.setFontFamily(FONT);
+      text.setFontSize(BODY_SIZE);
+      text.setForegroundColor(DARK_GREY);
+      text.setBold(false);
+    }
+  }
+
+  return table;
+}
+
+function addHorizontalRule(body) {
+  body.appendHorizontalRule();
+}
+
+function addCaption(body, text) {
+  var para = body.appendParagraph(text);
+  styleText(para, { size: CAPTION_SIZE, color: MID_GREY, italic: true });
+  para.setSpacingAfter(6);
+  return para;
+}
+
+function addImage(body, url, width) {
+  var blob = UrlFetchApp.fetch(url).getBlob();
+  var img = body.appendImage(blob);
+  if (width) img.setWidth(width);
+  return img;
+}
+
+// ============================================================
+// EDIT HELPERS — For modifying existing docs
+// ============================================================
+
+function openDoc(url) {
+  return DocumentApp.openByUrl(url);
+}
+
+function clearAndRebuild(url) {
+  var doc = DocumentApp.openByUrl(url);
+  var body = doc.getBody();
+  body.clear();
+  return { doc: doc, body: body };
+}
+
+function setPoppinsDefault(body) {
+  // Style the default empty paragraph to Poppins
+  var firstChild = body.getChild(0);
+  firstChild.editAsText()
+    .setFontFamily(FONT)
+    .setFontSize(BODY_SIZE)
+    .setForegroundColor(DARK_GREY);
+  var style = {};
+  style[DocumentApp.Attribute.FONT_FAMILY] = FONT;
+  style[DocumentApp.Attribute.FONT_SIZE] = BODY_SIZE;
+  style[DocumentApp.Attribute.FOREGROUND_COLOR] = DARK_GREY;
+  body.setAttributes(style);
+}
+
+// ============================================================
+// TEXT EDIT HELPERS — For targeted edits in existing docs
+// ============================================================
+
+function replaceText(body, oldText, newText) {
+  // Simple find-and-replace across the entire document body
+  body.replaceText(oldText, newText);
+  Logger.log('Replaced "' + oldText + '" with "' + newText + '"');
+}
+
+function findAndStyle(body, searchText, opts) {
+  // Find text and apply styling (bold, color, etc.)
+  var found = body.findText(searchText);
+  while (found) {
+    var text = found.getElement().editAsText();
+    var start = found.getStartOffset();
+    var end = found.getEndOffsetInclusive();
+    if (opts.bold !== undefined) text.setBold(start, end, opts.bold);
+    if (opts.italic !== undefined) text.setItalic(start, end, opts.italic);
+    if (opts.color) text.setForegroundColor(start, end, opts.color);
+    if (opts.font) text.setFontFamily(start, end, opts.font);
+    if (opts.size) text.setFontSize(start, end, opts.size);
+    found = body.findText(searchText, found);
+  }
+}
+
+// ============================================================
+// buildDoc() — Replace this function for each new document
+// ============================================================
+
+function buildDoc() {
+  var doc = DocumentApp.create('New Document');
+  var body = doc.getBody();
+  setPoppinsDefault(body);
+
+  addTitle(body, 'Document Title');
+  addParagraph(body, 'Replace this with your content. All text defaults to Poppins.');
+
+  addH1(body, 'Section One');
+  addParagraph(body, 'Use addParagraph, addH1, addH2, addH3, addBulletList, addNumberedList, addTable, addCaption, addImage, and addHorizontalRule to build your doc.');
+
+  Logger.log('Doc URL: ' + doc.getUrl());
+}

@@ -1,0 +1,171 @@
+// ============================================================
+// amp-slide Helper Functions Template
+// These patterns are used by the amp-slide skill to generate
+// buildSlide() functions for each slide request.
+// ============================================================
+
+// --- Constants ---
+var SLIDE_W = 720;
+var SLIDE_H = 405;
+var PAD = 36;
+var CARD_GAP = 16;
+var CONTENT_X = 36;
+var CONTENT_W = 648; // SLIDE_W - PAD * 2
+
+// --- Colors ---
+var BLACK = '#000000';
+var WHITE = '#FFFFFF';
+var LIGHT_GREY = '#F0F2F5';
+var AMP_BLUE = '#1E61F0';
+var CORAL = '#FF6B6B';
+var PURPLE = '#7B61FF';
+var DARK_GREY = '#333333';
+var MID_GREY = '#666666';
+var CARD_BORDER = '#E0E0E0';
+var BLUE_PURPLE = '#5B7BF0';
+
+// Accent colors by column index (0-based)
+var ACCENT_COLORS = [AMP_BLUE, BLUE_PURPLE, CORAL, PURPLE];
+
+// --- Helpers ---
+
+function clearSlide(slide) {
+  var elements = slide.getPageElements();
+  for (var i = elements.length - 1; i >= 0; i--) {
+    elements[i].remove();
+  }
+}
+
+function addFooter(slide) {
+  var footer = slide.insertShape(SlidesApp.ShapeType.TEXT_BOX, 400, 388, 284, 14);
+  footer.getText().setText('\u00A9 2026 Amplitude, Inc. Confidential. All Rights Reserved.');
+  footer.getText().getTextStyle()
+    .setFontFamily('Poppins')
+    .setFontSize(7)
+    .setForegroundColor(MID_GREY);
+  footer.getText().getParagraphStyle().setParagraphAlignment(SlidesApp.ParagraphAlignment.END);
+}
+
+function addHeadline(slide, text, opts) {
+  // opts: { x, y, w, h, size, color, align }
+  // Universal headline rule: 28pt bold, left-aligned, height 70 to support 2-line wrapping
+  var x = opts.x || PAD;
+  var y = opts.y || 20;
+  var w = opts.w || CONTENT_W;
+  var h = opts.h || 70;
+  var size = opts.size || 28;
+  var color = opts.color || BLACK;
+  var align = opts.align || SlidesApp.ParagraphAlignment.START;
+
+  var tb = slide.insertShape(SlidesApp.ShapeType.TEXT_BOX, x, y, w, h);
+  tb.getText().setText(text);
+  tb.getText().getTextStyle()
+    .setFontFamily('Poppins')
+    .setBold(true)
+    .setFontSize(size)
+    .setForegroundColor(color);
+  tb.getText().getParagraphStyle().setParagraphAlignment(align);
+  return tb;
+}
+
+function addCard(slide, x, y, w, h, opts) {
+  // opts: { fill, borderColor, borderWeight }
+  var fill = (opts && opts.fill) || WHITE;
+  var card = slide.insertShape(SlidesApp.ShapeType.ROUND_RECTANGLE, x, y, w, h);
+  card.getFill().setSolidFill(fill);
+  if (opts && opts.borderColor) {
+    card.getBorder().getLineFill().setSolidFill(opts.borderColor);
+    card.getBorder().setWeight(opts.borderWeight || 1);
+  } else {
+    card.getBorder().setTransparent();
+  }
+  return card;
+}
+
+function addPill(slide, x, y, w, h, text, bgColor) {
+  var pill = slide.insertShape(SlidesApp.ShapeType.ROUND_RECTANGLE, x, y, w, h);
+  pill.getFill().setSolidFill(bgColor);
+  pill.getBorder().setTransparent();
+  pill.getText().setText(text);
+  pill.getText().getTextStyle()
+    .setFontFamily('Poppins')
+    .setBold(true)
+    .setFontSize(Math.min(9, h * 0.4))
+    .setForegroundColor(WHITE);
+  pill.getText().getParagraphStyle().setParagraphAlignment(SlidesApp.ParagraphAlignment.CENTER);
+  pill.setContentAlignment(SlidesApp.ContentAlignment.MIDDLE);
+  return pill;
+}
+
+function addTextBox(slide, x, y, w, h, text, opts) {
+  // opts: { size, color, bold, align, valign }
+  var tb = slide.insertShape(SlidesApp.ShapeType.TEXT_BOX, x, y, w, h);
+  tb.getText().setText(text);
+  tb.getText().getTextStyle()
+    .setFontFamily('Poppins')
+    .setBold(opts.bold || false)
+    .setFontSize(opts.size || 12)
+    .setForegroundColor(opts.color || DARK_GREY);
+  if (opts.align) {
+    tb.getText().getParagraphStyle().setParagraphAlignment(opts.align);
+  }
+  if (opts.valign) {
+    tb.setContentAlignment(opts.valign);
+  }
+  return tb;
+}
+
+function addDividerLine(slide, x, y, w, color) {
+  var line = slide.insertShape(SlidesApp.ShapeType.RECTANGLE, x, y, w, 1);
+  line.getFill().setSolidFill(color || MID_GREY);
+  line.getBorder().setTransparent();
+  return line;
+}
+
+function addStatBlock(slide, x, y, w, stat, label, accentColor) {
+  // Pill
+  var pillW = 130;
+  var pillX = x + (w - pillW) / 2;
+  addPill(slide, pillX, y, pillW, 22, 'VERIFIED OUTCOME', accentColor);
+
+  // Stat number
+  var statTb = addTextBox(slide, x, y + 28, w, 40, stat, {
+    size: 36,
+    color: accentColor,
+    bold: true,
+    align: SlidesApp.ParagraphAlignment.CENTER
+  });
+
+  // Label
+  var labelTb = addTextBox(slide, x, y + 65, w, 20, label, {
+    size: 11,
+    color: DARK_GREY,
+    align: SlidesApp.ParagraphAlignment.CENTER
+  });
+}
+
+// --- Vertical centering helper ---
+// Centers content between headline bottom and footer top
+function centerContentY(contentH) {
+  var headlineBottom = 90;  // y=20 + h=70
+  var footerTop = 385;
+  return headlineBottom + Math.round((footerTop - headlineBottom - contentH) / 2);
+}
+
+// --- Example: Title Slide ---
+// function buildSlide() {
+//   var pres = SlidesApp.create('My Presentation');
+//   var slide = pres.getSlides()[0];
+//   clearSlide(slide);
+//   slide.getBackground().setSolidFill(AMP_BLUE);
+//
+//   addHeadline(slide, 'Big Bold\nHeadline Here', {
+//     y: 140, h: 100, size: 36, color: WHITE
+//   });
+//   addDividerLine(slide, PAD, 262, 200, MID_GREY);
+//   addTextBox(slide, PAD, 275, 400, 24, 'Subtitle text', {
+//     size: 14, color: '#999999'
+//   });
+//   addFooter(slide);
+//   Logger.log('URL: ' + pres.getUrl());
+// }
