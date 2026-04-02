@@ -50,7 +50,7 @@ This keeps the slide visually balanced regardless of how tall the content block 
 
 ```
 ┌──────────────────────────────────────────────┐  Background: #1E61F0 (Amplitude Blue)
-│                                    [DATE]    │  Date pill: top-right
+│                                              │
 │                                              │
 │                                              │
 │  Large Headline Text                         │  Poppins SemiBold 36pt white
@@ -67,7 +67,6 @@ This keeps the slide visually balanced regardless of how tall the content block 
 | Element | x | y | width | height | Style |
 |---------|---|---|-------|--------|-------|
 | Background | 0 | 0 | 720 | 405 | Fill: #1E61F0 (Amplitude Blue) |
-| Date pill (optional) | 580 | 28 | 110 | 28 | Fill: #FF6B6B, rx:14, text: white bold 10pt |
 | Headline | 36 | 140 | 550 | 100 | Poppins SemiBold 36pt, white, left-aligned, line spacing 1.2 |
 | Divider line | 36 | 262 | 200 | 1 | Fill: #FFFFFF (40% opacity — use #8AADFF on blue bg) |
 | Subtitle | 36 | 275 | 400 | 24 | Poppins Regular 14pt, #C2D4FA (white 70% on blue) |
@@ -76,15 +75,14 @@ This keeps the slide visually balanced regardless of how tall the content block 
 
 ### Optional decorative elements
 
-Title slides can include decorative graphics on the right side (the area not occupied by headline text). These are built from native Slides shapes — no images needed.
+Title slides can include a subtle decorative element in the bottom-right corner. These are built from native Slides shapes — no images needed.
 
-**Constellation network** (good for data/analytics/protocol themes):
-- Offset: `ox=420, oy=20` puts the network in the top-right quadrant
-- Central hub: large white ELLIPSE (r=10) at center of network
-- Primary nodes: medium ellipses (r=6-7) in `#C2D4FA`, connected to hub via `insertLine` in `#C2D4FA`
-- Secondary nodes: smaller (r=3-4) in `#A8C4FF`, tertiary dust (r=1.5-2) in `#8AADFF`
-- Orbit rings: transparent ELLIPSE shapes with dotted `#8AADFF` borders (`DashStyle.DOT`)
-- Lines use lighter colors for thinner weights: `#C2D4FA` (thick), `#A8C4FF` (medium), `#8AADFF` (thin)
+**Concentric arc rings** (default decorative element):
+- Center point: `cx=680, cy=420` (off-slide at bottom-right corner, so only the top-left arcs are visible)
+- Three rings with radii `[120, 200, 290]`
+- Each ring is a transparent ELLIPSE with a colored border: `#8AADFF` (inner, 2.5pt), `#6B96F0` (middle, 2pt), `#5580E0` (outer, 1.5pt)
+- Optional: 2–3 small accent dots (r=2-3) in `#C2D4FA` / `#A8C4FF` placed along the visible arc edges
+- Effect: subtle, geometric, brand-appropriate — reads as "data orbits" without being literal
 
 **"Made by Claude" badge** (bottom-left pill):
 

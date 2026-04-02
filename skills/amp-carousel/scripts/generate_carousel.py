@@ -53,13 +53,12 @@ BOTTOM = 80    # bottom padding
 
 # Logo resolution order:
 #   1. assets/ folder bundled alongside this script (skill-local)
-#   2. "amp brand" folder in the Agentwork workspace (absolute fallback)
+#   2. "amp brand" folder in the workspace root (relative fallback)
 _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 _ASSETS_DIR = os.path.join(_SCRIPT_DIR, "..", "assets")
 _WORKSPACE_LOGO_DIR = os.path.join(
-    os.path.dirname(_SCRIPT_DIR),  # up from scripts/ → amp-carousel/
-    "..", "..", "..", "..", "..",   # up to mnt/
-    "Agentwork", "amp brand", "Amplitude Logo", "Full", "PNG (RGB)"
+    _SCRIPT_DIR, "..", "..", "..", "..",
+    "amp brand", "Amplitude Logo", "Full", "PNG (RGB)"
 )
 
 def _find_logo(name):

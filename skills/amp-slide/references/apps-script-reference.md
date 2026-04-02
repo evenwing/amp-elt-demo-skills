@@ -305,23 +305,29 @@ shape.getBorder().setDashStyle(SlidesApp.DashStyle.DOT);
 // Also: DASH, DASH_DOT, LONG_DASH, LONG_DASH_DOT, SOLID
 ```
 
-### Decorative network graphics
+### Concentric arc rings
 
-Complex decorative elements (constellation networks, node graphs) can be built entirely from native Slides shapes — no image uploads needed. The pattern:
-
-1. Define nodes as `[x, y, radius]` arrays
-2. Define connections as `[fromIdx, toIdx, weight]` arrays
-3. Draw lines first (they render behind shapes)
-4. Draw ellipses on top as nodes
-5. Use color hierarchy: white for central hub, lighter blues (`#C2D4FA`, `#A8C4FF`, `#8AADFF`) for progressively smaller/distant nodes
+The default decorative element for title slides. Large ellipses centered off-slide at the bottom-right corner so only the top-left arc is visible — creates a subtle, geometric "data orbit" effect.
 
 ```javascript
-// Dotted orbit rings
-var ring = slide.insertShape(SlidesApp.ShapeType.ELLIPSE, cx-r, cy-r, r*2, r*2);
-ring.getFill().setTransparent();
-ring.getBorder().getLineFill().setSolidFill('#8AADFF');
-ring.getBorder().setWeight(0.75);
-ring.getBorder().setDashStyle(SlidesApp.DashStyle.DOT);
+// Concentric arc rings — center off-slide at bottom-right
+var cx = 680; var cy = 420;
+var radii = [120, 200, 290];
+var colors = ['#8AADFF', '#6B96F0', '#5580E0'];
+var weights = [2.5, 2, 1.5];
+
+for (var r = 0; r < radii.length; r++) {
+  var rad = radii[r];
+  var ring = slide.insertShape(SlidesApp.ShapeType.ELLIPSE, cx - rad, cy - rad, rad * 2, rad * 2);
+  ring.getFill().setTransparent();
+  ring.getBorder().getLineFill().setSolidFill(colors[r]);
+  ring.getBorder().setWeight(weights[r]);
+}
+
+// Optional small accent dots along visible arc edges
+var dot = slide.insertShape(SlidesApp.ShapeType.ELLIPSE, 558, 388, 6, 6);
+dot.getFill().setSolidFill('#C2D4FA');
+dot.getBorder().setTransparent();
 ```
 
 ## In-Place Slide Editing
