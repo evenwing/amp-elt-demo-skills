@@ -45,7 +45,7 @@ Read the detailed reference files as needed:
 ## Supported Slide Types
 
 ### 1. Title Slide
-Amplitude Blue (`#1E61F0`) background, large white headline, subtitle, optional date pill. Use for opening a deck or starting a section. Can include optional decorative SVG elements — a constellation network graphic on the right side works well for data/analytics themes (built from native ellipses + lines, no image uploads needed). A "Made by Claude with ❤️" badge pill is a nice touch for AI-generated decks. See `references/apps-script-reference.md` → "Decorative network graphics" for the pattern.
+Amplitude Blue (`#1E61F0`) background, large white headline, subtitle. No date pill. Use for opening a deck or starting a section. Can include optional concentric arc rings in the bottom-right corner as a subtle geometric decoration (built from native ellipses positioned partially off-slide, no image uploads needed). A "Made by Claude with ❤️" badge pill is a nice touch for AI-generated decks. See `references/apps-script-reference.md` → "Concentric arc rings" for the pattern.
 
 ### 2. Content + Bullets
 Light or dark background, headline at top, rounded-corner card containing arrow-bulleted items. Use for key points, feature lists, talking points.

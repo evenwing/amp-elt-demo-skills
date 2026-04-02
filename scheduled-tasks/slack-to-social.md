@@ -107,4 +107,4 @@ When in doubt, generalize. The tweet should read as an industry insight, not a l
 
 ## Output format
 
-Save the output as a markdown file to the workspace folder at /sessions/*/mnt/Social/tweet-ideas-{date}.md
+Save the output as a markdown file to `Social/tweet-ideas-{date}.md` in the workspace root.
