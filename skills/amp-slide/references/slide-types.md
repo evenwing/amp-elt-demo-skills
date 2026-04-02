@@ -52,25 +52,24 @@ This keeps the slide visually balanced regardless of how tall the content block 
 ┌──────────────────────────────────────────────┐  Background: #1E61F0 (Amplitude Blue)
 │                                              │
 │                                              │
-│                                              │
 │  Large Headline Text                         │  Poppins SemiBold 36pt white
 │  Here on Two Lines                           │
-│  ─────────────────────                       │  Divider line: rgba white 40%
 │  Subtitle / Author                           │  Poppins Regular 14pt rgba white 70%
 │                                              │
 │                          © 2026 Amplitude... │  Footer 7pt rgba white 50%
 └──────────────────────────────────────────────┘
 ```
 
+No divider line on title slides. Subtitles sit directly below the headline box with 12pt gap.
+
 ### Element positions
 
 | Element | x | y | width | height | Style |
 |---------|---|---|-------|--------|-------|
 | Background | 0 | 0 | 720 | 405 | Fill: #1E61F0 (Amplitude Blue) |
-| Headline | 36 | 140 | 550 | 100 | Poppins SemiBold 36pt, white, left-aligned, line spacing 1.2 |
-| Divider line | 36 | 262 | 200 | 1 | Fill: #FFFFFF (40% opacity — use #8AADFF on blue bg) |
-| Subtitle | 36 | 275 | 400 | 24 | Poppins Regular 14pt, #C2D4FA (white 70% on blue) |
-| Second subtitle line | 36 | 298 | 400 | 24 | Poppins Regular 14pt, #C2D4FA |
+| Headline | 36 | 100 | 520 | 120 | Poppins SemiBold 36pt, white, left-aligned. Height=120 fits up to 3 lines. |
+| Subtitle | 36 | 232 | 400 | 24 | Poppins Regular 14pt, #C2D4FA (white 70% on blue) |
+| Second subtitle line | 36 | 255 | 400 | 24 | Poppins Regular 14pt, #C2D4FA |
 | Footer | FOOTER_X | FOOTER_Y | — | — | Right-aligned, 7pt, #8AADFF (white 50% on blue) |
 
 ### Optional decorative elements
