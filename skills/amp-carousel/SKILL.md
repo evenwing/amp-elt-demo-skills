@@ -56,14 +56,19 @@ Use the bundled script at `scripts/generate_carousel.py`. Call it like this:
 ```bash
 python3 <skill_dir>/scripts/generate_carousel.py \
   --slides '<JSON>' \
-  --output '<output_dir>' \
-  --logo-dir '<path_to_Amplitude_Logo_dir>'
+  --output '/sessions/.../mnt/Agentwork/carousel/'
 ```
 
 Where:
-- `--slides` is a JSON array of slide objects (see schema below)
-- `--output` is the directory to save PNGs to (use `/sessions/.../mnt/Agentwork/`)
-- `--logo-dir` (optional) points to the `Amplitude Logo` directory containing `Full/` and `Mark/` subdirs. On Sandhya's workspace this is typically `Agentwork/Amp Brand/Amplitude Logo`. If omitted, uses a drawn fallback logo.
+- `--slides` is a JSON array of slide objects (see schema below), or use `--slides-file path/to/slides.json`
+- `--output` is the directory to save PNGs to — **always use `/sessions/.../mnt/Agentwork/carousel/`** so slides land in the dedicated carousel folder
+
+**Logo resolution**: The script automatically finds the Amplitude logo by checking:
+1. `amp-carousel/assets/` (bundled in skill) — takes priority if present
+2. `Agentwork/amp brand/Amplitude Logo/Full/PNG (RGB)/` (workspace fallback)
+3. Drawn "A" fallback if neither is found
+
+No `--logo-dir` flag needed — logos are resolved automatically.
 
 ### Step 4 — Review and present
 

@@ -50,15 +50,47 @@ Every tweet idea MUST map to one of these themes (these are the topics I write a
 
 ## Step 3: Draft the tweets
 
-For each of the 5 tweet ideas:
+For each of the 5 tweet ideas, produce these sections:
 
-**Tweet:** Write in my voice — confident, specific, data-driven, slightly witty. No hedging. Name real companies and real numbers when possible. Keep under 280 characters OR write a short thread (2-3 tweets max). Avoid AI-writing tells: no "transformative," "landscape," "notably," "delve," "game-changer."
+**Tweet:** Draft the actual tweet text following the voice rules below. Keep to a single tweet (under 280 chars) for a punchy take. Use a 2-3 tweet thread ONLY when there's a real narrative arc — a setup, a surprising turn, and a payoff. Never thread just to fit more words.
 
 **Inspiration:** Quote the specific Slack message(s) that inspired it — include the channel, who said it, and the key snippet.
 
 **Theme:** Which of the 7 themes above this maps to.
 
 **Why post:** 1-2 sentences on why this will resonate with my audience (AI product leaders, SaaS founders, VCs).
+
+### Voice rules — follow these strictly
+
+**Opening:** Lead with a bold claim, a surprising number, or a sharp observation. No warm-up. No "here's a thought on…" or "I've been thinking about…" The first sentence should already be doing work.
+
+**Sentence rhythm:** Mix short punchy sentences with longer analytical ones. A short sentence lands the point. A longer one builds the case. Never write 3+ sentences at the same length in a row.
+
+**Parenthetical asides:** One dry, self-aware aside per tweet is on-brand. Examples: "(remember those?)", "(Stop saying but what about ROIC please)", "(freedom of speech, duh)". Never more than one per tweet. Use only when it genuinely adds wit — don't force it.
+
+**Specificity:** Name real companies, cite real numbers, reference actual products. "Many companies" is weak. "Notion went from fixing 3 to 30 issues per day" is strong. After drafting, run through the confidentiality filter in Step 4 for Amplitude-internal data.
+
+**Metaphors:** Reach for vivid, freshly coined metaphors over generic framing. "The decay function on pricing is exponential" > "pricing is changing fast." Never use recycled clichés.
+
+**Endings:** End with stakes, urgency, or a sharp reframe. Never end with "food for thought," "what do you think?", "the future looks bright," or "only time will tell."
+
+**Tone:** Write like a sharp practitioner talking to other sharp practitioners. Confident, slightly urgent, with a sense of humor. Not academic, not corporate.
+
+### AI-writing tells — NEVER use these
+
+**Significance inflation:** "pivotal moment," "transformative potential," "marks a new era," "testament to"
+**Vague attributions:** "experts believe," "studies show," "many have noted"
+**Superficial -ing analyses:** "symbolizing," "reflecting," "showcasing," "underscoring"
+**Promotional language:** "nestled within," "breathtaking," "groundbreaking," "revolutionary," "game-changer"
+**Formulaic framing:** "Despite challenges, X continues to thrive"
+**AI vocabulary:** "additionally," "furthermore," "notably," "it's worth noting," "landscape," "realm," "delve into"
+**Copula avoidance:** "serves as," "functions as," "stands as," "acts as" — just say "is"
+**Negative parallelisms:** "It's not just X, it's Y" — state the point directly
+**Forced rule of three:** "innovation, inspiration, and impact" — use the natural number of items
+**Synonym cycling:** Don't vary word choice just to avoid repetition. Use the clearest word each time.
+**Generic conclusions:** "The future looks bright," "exciting times lie ahead," "only time will tell"
+**Hedging:** "it might be argued," "arguably," "it's worth noting," "could potentially"
+**Corporate buzzwords:** "leverage," "unlock value," "drive impact," "move the needle," "synergy"
 
 ## Step 4: Scrub confidential data from tweets
 
