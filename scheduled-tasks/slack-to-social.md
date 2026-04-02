@@ -62,19 +62,28 @@ For each of the 5 tweet ideas, produce these sections:
 
 ### Voice rules — follow these strictly
 
-**Opening:** Lead with a bold claim, a surprising number, or a sharp observation. No warm-up. No "here's a thought on…" or "I've been thinking about…" The first sentence should already be doing work.
+**Case & grammar:** mostly lowercase. not aggressively so — capitalize proper nouns, product names, acronyms — but default to lowercase for everything else including the start of sentences. imperfect grammar is fine and encouraged. sentence fragments, trailing off with "..." are good. this should read like someone typing fast with a thought they need to get out.
 
-**Sentence rhythm:** Mix short punchy sentences with longer analytical ones. A short sentence lands the point. A longer one builds the case. Never write 3+ sentences at the same length in a row.
+**Emojis:** use a few emojis sparingly but naturally. :( and 😤 for frustration, 🔥 for something exciting, etc. never more than 2-3 per tweet. they should feel like punctuation, not decoration.
 
-**Parenthetical asides:** One dry, self-aware aside per tweet is on-brand. Examples: "(remember those?)", "(Stop saying but what about ROIC please)", "(freedom of speech, duh)". Never more than one per tweet. Use only when it genuinely adds wit — don't force it.
+**Sentence structure:** mix very short fragments with longer run-on thoughts connected by "..." or "and" or just line breaks. sometimes a sentence is just one word. sometimes it's a whole paragraph stitched together with no periods. match the energy of the thought — tight when making a sharp point, rambling when thinking through an idea.
 
-**Specificity:** Name real companies, cite real numbers, reference actual products. "Many companies" is weak. "Notion went from fixing 3 to 30 issues per day" is strong. After drafting, run through the confidentiality filter in Step 4 for Amplitude-internal data.
+**Tone:** thinking out loud. like you're texting a smart friend about something you just noticed. not performing for an audience. not trying to sound authoritative. just... saying the thing. sometimes frustrated, sometimes excited, always honest.
 
-**Metaphors:** Reach for vivid, freshly coined metaphors over generic framing. "The decay function on pricing is exponential" > "pricing is changing fast." Never use recycled clichés.
+**Specificity:** name real companies, real products, real tools. "many companies" is weak. "Cursor" or "Claude Code" or "Stripe" is strong. After drafting, run through the confidentiality filter in Step 4 for internal data.
 
-**Endings:** End with stakes, urgency, or a sharp reframe. Never end with "food for thought," "what do you think?", "the future looks bright," or "only time will tell."
+**Parenthetical asides:** keep the dry, self-aware asides but make them feel more casual. "(remember those?)" still works. "(lol)" works too. don't force them.
 
-**Tone:** Write like a sharp practitioner talking to other sharp practitioners. Confident, slightly urgent, with a sense of humor. Not academic, not corporate.
+**Endings:** can trail off, can land hard, can just... stop. don't wrap things up neatly. definitely never end with "food for thought" or "what do you think?" — but ending mid-thought or with a strong opinion is great.
+
+**What NOT to sound like:** a thought leader crafting a Perfect Tweet. no polished setups. no "here's what I learned" framing. no clean narrative arcs unless the idea genuinely has one. this is not a TED talk, it's a group chat.
+
+**Reference examples — study these closely and match the vibe:**
+
+> getting frustrated when Claude CoWork behaves differently from Code because my entire mental model for AI work is now based on the latter...   :(
+> If we are going to lean heavily on GitHub and .md filesystems for everything we need more consistent UX around plugins and authentication flows.
+
+> It makes little sense to be an indie software developer selling subscriptions to point SaaS solutions anymore...Completely out of vogue and not fun to maintain. Too much SaaS tool bloat in the ecosystem and personal software is the future.   But not everyone will build their own. Open source + bring-your-own-key is the way for most use cases that are on-demand tasks. If it's a background agent/always on task, maybe use stripe's new LLM billing method to offer a fully hosted solution with a good open source API.
 
 ### AI-writing tells — NEVER use these
 
@@ -91,6 +100,7 @@ For each of the 5 tweet ideas, produce these sections:
 **Generic conclusions:** "The future looks bright," "exciting times lie ahead," "only time will tell"
 **Hedging:** "it might be argued," "arguably," "it's worth noting," "could potentially"
 **Corporate buzzwords:** "leverage," "unlock value," "drive impact," "move the needle," "synergy"
+**Overly polished tone:** anything that sounds like it was workshopped. if it reads like a LinkedIn post, rewrite it.
 
 ## Step 4: Scrub confidential data from tweets
 
